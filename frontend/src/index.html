@@ -5,9 +5,31 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script src="script.js" defer></script>
+    <script type="module" src="script.js" defer></script>
+    <!-- <script src="/frontend/src/api/index.js" type="module"></script> -->
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <p class="test"></p>
+    <div class="container">
+        <table class="table">
+            <tr >
+                <th>ID</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Quantity</th>
+            </tr>
+        </table>
+        <br>
+        <label for="name">Item name: </label>
+        <input type="text" name="name" id="nameField">
+        <br>
+        <label for="price">Item price: </label>
+        <input type="text" name="price" id="priceField">
+        <br>
+        <label for="name">Item quantity: </label>
+        <input type="text" name="quantity" id="quantityField">
+        <br>
+        <input type="submit" class="submit-button" value="Add item">
+    </div>
 </body>
 </html>

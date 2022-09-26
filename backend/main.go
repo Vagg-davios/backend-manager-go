@@ -43,7 +43,6 @@ func addItem(context *gin.Context) {
 
 // Get the id from the url and display that certain item
 func getItem(context *gin.Context) {
-
 	id := context.Param("id")
 
 	item, err := getItemById(id)
