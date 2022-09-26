@@ -4,6 +4,8 @@ async function fetchAsync(url) {
   return data;
 }
 
+console.log(fetchAsync("http://127.0.0.1:8080/items/3"));
+
 const p = document.querySelector(".test");
 
 console.log(p);
