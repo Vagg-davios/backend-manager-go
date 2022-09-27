@@ -18,6 +18,7 @@ This is a backend manager REST API written in GO. It includes the functionality 
 - It's a REST API using [Gin](https://pkg.go.dev/github.com/gin-gonic/gin@v1.8.1) for the server & the routing and [net/http](https://pkg.go.dev/net/http) for validating. 
 - Communication is done through port **:8080** with Go handling the requests sent from Javascript.
 - JSON is used for the request bodies. <br>
+- CORS handling was done using [Go CORS handler](https://github.com/rs/cors) <br>
 
 Requests available: <br>
 
