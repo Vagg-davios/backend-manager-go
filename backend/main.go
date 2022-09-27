@@ -5,6 +5,7 @@ import (
 	"net/http"
 
 	"github.com/gin-gonic/gin"
+	cors "github.com/rs/cors/wrapper/gin"
 )
 
 type Item struct {
@@ -18,6 +19,9 @@ var items = []Item{
 	{ID: "1", Title: "Brush", Quantity: 2, Price: 12.00},
 	{ID: "2", Title: "Bed", Quantity: 20, Price: 100.00},
 	{ID: "3", Title: "Pan", Quantity: 2, Price: 10.50},
+	{ID: "4", Title: "Brush", Quantity: 2, Price: 12.00},
+	{ID: "5", Title: "Bed", Quantity: 20, Price: 100.00},
+	{ID: "6", Title: "Pan", Quantity: 2, Price: 10.50},
 }
 
 // Display items as a JSON format
@@ -69,14 +73,17 @@ func main() {
 
 	router := gin.Default()
 
+	router.Use(cors.Default()) // Used to bypass CORS policy
+
 	// GET request for all items
 	router.GET("/items", getItems)
 
-	// POST request for adding items
+	// // POST request for adding items
 	router.POST("/items", addItem)
 
-	// GET request for single item
+	// // GET request for single item
 	router.GET("/items/:id", getItem)
 
-	router.Run()
+	router.Run(":8080")
+
 }
