@@ -6,7 +6,7 @@
 2. Git clone https://github.com/Vagg-davios/rest-api-in-go.git
 3. Open your favorite IDE / text-editor inside that folder
 4. *cd ./backend*
-5. Go run main.go
+5. *go run main.go*
 6. Run your frontend
 7. Boom. Enjoy! 🎉
 
