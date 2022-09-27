@@ -2,7 +2,7 @@
 
 ## Installation
 
-1. Install [GO](https://go.dev/dl/)
+1. Install [GoLang](https://go.dev/dl/)
 2. Git clone https://github.com/Vagg-davios/rest-api-in-go.git
 3. Open your favorite IDE / text-editor inside that folder
 4. *cd ./backend*
