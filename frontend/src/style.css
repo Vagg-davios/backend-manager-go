@@ -7,3 +7,8 @@ table, th, td, tr {
     border: 1px solid;
 
 }
+
+input[type=submit]
+ {
+  margin-top: 0.5em;
+}
