@@ -1,4 +1,4 @@
-# Backend manager written in <img src="https://user-images.githubusercontent.com/101106849/192489171-0445c9b5-8aa4-4b72-828f-793232d02cfd.png" width="85" height="35" /> <img src="https://user-images.githubusercontent.com/101106849/192488357-bb6df28e-5e63-426a-9ea6-54a03a28fc6a.png" width="30" height="35" />
+# REST API written in <img src="https://user-images.githubusercontent.com/101106849/192489171-0445c9b5-8aa4-4b72-828f-793232d02cfd.png" width="85" height="35" /> <img src="https://user-images.githubusercontent.com/101106849/192488357-bb6df28e-5e63-426a-9ea6-54a03a28fc6a.png" width="30" height="35" />
 
 ## Installation
 
