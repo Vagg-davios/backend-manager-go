@@ -42,6 +42,7 @@ const table = document.querySelector(".table");
 const allInputs = document.querySelectorAll("input");
 const submitButton = document.querySelector(".submit-button");
 const delButton = document.querySelector(".del-button");
+const editButton = document.querySelector(".edit-button");
 
 submitButton.addEventListener("click", () => {
   if (allInputs[0].value && allInputs[1].value && allInputs[2].value != "") {
@@ -68,9 +69,26 @@ submitButton.addEventListener("click", () => {
 delButton.addEventListener("click", () => {
   if (allInputs[4].value != "") {
     var xhr = new XMLHttpRequest(); // Same as above but now without a body, the id is sent on the url (url)/:id
-    xhr.open("PATCH", url + "/" + allInputs[4].value, true); // PATCH because it works better than DELETE for some reason.
+    xhr.open("DELETE", url + "/" + allInputs[4].value, true); // PATCH because it works better than DELETE for some reason.
     xhr.setRequestHeader("Content-Type", "application/json");
     xhr.send();
+    console.log(xhr);
+
+    location.reload();
+  }
+});
+
+editButton.addEventListener("click", () => {
+  if (allInputs[6].value && allInputs[7].value != "") {
+    var xhr = new XMLHttpRequest();
+    xhr.open(
+      "PATCH",
+      url + "/" + allInputs[6].value + "/" + allInputs[7].value,
+      true
+    );
+    xhr.setRequestHeader("Content-Type", "application/json");
+    xhr.send();
+    console.log(xhr);
     location.reload();
   }
 });
