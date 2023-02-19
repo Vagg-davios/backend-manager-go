@@ -3,25 +3,26 @@ package main
 import (
 	"errors"
 	"net/http"
+	"strconv"
 
 	"github.com/gin-gonic/gin"
 	cors "github.com/rs/cors/wrapper/gin"
 )
 
 type Item struct {
-	ID       string  `json:"id"`
+	ID       uint64  `json:"id"`
 	Title    string  `json:"title"`
 	Quantity uint8   `json:"quantity"`
 	Price    float32 `json:"price"`
 }
 
 var items = []Item{
-	{ID: "1", Title: "Brush", Quantity: 50, Price: 12.00},
-	{ID: "2", Title: "Bed", Quantity: 200, Price: 0.80},
-	{ID: "3", Title: "Pan", Quantity: 100, Price: 10.50},
-	{ID: "4", Title: "Water", Quantity: 150, Price: 0.50},
-	{ID: "5", Title: "Desk", Quantity: 10, Price: 100.00},
-	{ID: "6", Title: "Chair", Quantity: 20, Price: 69.99},
+	{ID: 1, Title: "Brush", Quantity: 50, Price: 12.00},
+	{ID: 2, Title: "Bed", Quantity: 200, Price: 0.80},
+	{ID: 3, Title: "Pan", Quantity: 100, Price: 10.50},
+	{ID: 4, Title: "Water", Quantity: 150, Price: 0.50},
+	{ID: 5, Title: "Desk", Quantity: 10, Price: 100.00},
+	{ID: 6, Title: "Chair", Quantity: 20, Price: 69.99},
 }
 
 // Display items as a JSON format
@@ -74,10 +75,27 @@ func removeItem(context *gin.Context) {
 	context.IndentedJSON(http.StatusOK, items)
 }
 
+// Take the id from the parameter, convert price to float and set new price
+func editItem(context *gin.Context) {
+	id := context.Param("id") // fetch id from param
+	convertedPrice, _ := strconv.ParseFloat(context.Param("price"), 32) // fetch price from param & convert to float
+
+	item, err, _ := getItemById(id)
+	if err != nil {
+		context.IndentedJSON(http.StatusNotFound, gin.H{"message": "Item not found"})
+		return
+	}
+
+	item.Price = float32(convertedPrice) // set price
+
+	context.IndentedJSON(http.StatusOK, items)
+}
+
 // Loop through items and find the item with the given id
 func getItemById(id string) (*Item, error, int) {
+	convertedID, _ := strconv.Atoi(id)
 	for i, t := range items {
-		if t.ID == id {
+		if t.ID == uint64(convertedID) {
 			return &items[i], nil, i
 		}
 	}
@@ -107,8 +125,11 @@ func main() {
 	// GET request for single item
 	router.GET("/items/:id", getItem)
 
-	// PATCH request for deleting an item (Changed from DELETE to PATCH, works better for some reason?)
-	router.PATCH("/items/:id", removeItem)
+	// DELETE request for deleting an item
+	router.DELETE("/items/:id", removeItem)
+
+	// PATCH request for updating an item's price
+	router.PATCH("/items/:id/:price", editItem)
 
 	router.Run(":8080")
 
